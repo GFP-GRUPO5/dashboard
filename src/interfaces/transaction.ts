@@ -1,4 +1,4 @@
-export type TransactionType = "depósito" | "transferência"| "saque"
+export type TransactionType = "depósito" | "transferência"| ""
 
 export interface Transaction {
     id?: number;
