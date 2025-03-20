@@ -1,6 +1,8 @@
+export type TransactionType = "depósito" | "transferência"| "saque"
+
 export interface Transaction {
     id?: number;
-    type: "depósito" | "transferência"| "";
+    type: TransactionType;
     value: number;
     date: string;
     month: string;

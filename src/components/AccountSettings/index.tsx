@@ -1,8 +1,7 @@
-import Image from "next/image";
-import settings from "../../../public/images/illustrations/settings.svg";
-import TextField from "../Inputs/TextField";
-import Button from "../Button";
 import { MdModeEdit } from "react-icons/md";
+import Settings from "../../../public/images/illustrations/settings";
+import Button from "../Button";
+import TextField from "../Inputs/TextField";
 
 const AccountSettings = () => {
 
@@ -34,11 +33,9 @@ const AccountSettings = () => {
                     />
                 </form>
                 <div className="w-full self-center">
-                    <Image
-                        src={settings}
-                        alt="Ilustração de uma pessoa ao lado de um computador gigante"
-                        className="self-center w-full"
-                    />
+                    <div className="self-center w-full">
+                        <Settings />
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { FiUpload, FiFileText } from "react-icons/fi";
-import TextField from "@/components/Inputs/TextField";
 import Button from "@/components/Button";
-import SelectorField from "@/components/Inputs/SelectorField";
-import Image from "next/image";
-import transaction from "../../../public/images/illustrations/transaction.svg";
-import useSuggestedAmounts from "@/hooks/useSuggestedAmounts";
 import CheckboxField from "@/components/Inputs/CheckboxField";
+import SelectorField from "@/components/Inputs/SelectorField";
+import TextField from "@/components/Inputs/TextField";
+import useSuggestedAmounts from "@/hooks/useSuggestedAmounts";
 import useTransaction from "@/hooks/useTransaction";
+import Image from "next/image";
+import { useState } from "react";
+import { FiFileText, FiUpload } from "react-icons/fi";
+import Transaction from "../../../public/images/illustrations/transaction";
 
 const FormTransaction = () => {
   const { transactionType, setTransactionType, amount, setAmount, handleTransaction } = useTransaction();
@@ -97,7 +97,7 @@ const FormTransaction = () => {
         </div>
 
         <div className="col-span-3 flex justify-end items-end">
-          <Image src={transaction} alt="Ilustração de uma pessoa segurando um cartão gigante" />
+          <Transaction />
         </div>
       </div>
     </form>

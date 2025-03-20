@@ -1,11 +1,11 @@
-import Image, { StaticImageData } from "next/image";
-import physicalCard from "../../../public/images/illustrations/physical.svg";
-import digitalCard from "../../../public/images/illustrations/digital.svg";
+import { ReactNode } from "react";
+import DigitalCard from "../../../public/images/illustrations/digital";
+import PhysicalCard from "../../../public/images/illustrations/physical";
 import Button from "../Button";
 
 interface CardProps {
     type: string;
-    image: StaticImageData;
+    image: ReactNode;
     function: string;
 }
 
@@ -13,12 +13,12 @@ const Cards = () => {
     const cards: CardProps[] = [
         {
             type: "Cartão físico",
-            image: physicalCard,
+            image: <PhysicalCard />,
             function: "Débito/Crédito",
         },
         {
             type: "Cartão digital",
-            image: digitalCard,
+            image: <DigitalCard />,
             function: "Débito",
         },
     ];
@@ -30,7 +30,7 @@ const Cards = () => {
                 <div key={index}>
                     <p className="mb-6 max-md:text-center">{card.type}</p>
                     <div className="flex gap-6 items-center max-md:flex-col">
-                        <Image src={card.image} alt={card.type} width={250}/>
+                        {card.image}
                         <div className="flex flex-col items-center gap-6">
                             <Button
                                 text="Configurar"

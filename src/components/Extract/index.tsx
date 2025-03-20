@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { Transaction } from "@/interfaces/transaction";
-import PaginationControl from "./PaginationControl";
-import TransactionPopup from "./TransactionPopup";
-import PopUp from "../PopUp";
-import TransactionList from "./TransactionList";
 import { useFilteredTransactions } from "@/hooks/useFilteredTransaction";
+import { Transaction } from "@/interfaces/transaction";
+import Image from "next/image";
+import { useState } from "react";
+import PopUp from "../PopUp";
 import { TransactionFilter } from "./Filter";
+import PaginationControl from "./PaginationControl";
+import TransactionList from "./TransactionList";
+import TransactionPopup from "./TransactionPopup";
 
 const itensPerPage = 4;
 
@@ -64,7 +65,7 @@ const Extract = ({ transactions, onEdit, onDelete }: ExtractProps) => {
       >
         {receiptUrl && (
           <div className="flex justify-center items-center h-full">
-            <img src={receiptUrl} alt="Recibo" className="max-w-full max-h-[500px]" />
+            <Image src={receiptUrl} alt="Recibo" className="max-w-full max-h-[500px]" />
           </div>
         )}
       </PopUp>

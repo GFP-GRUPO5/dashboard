@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getInvestments, updateInvestment } from "@/api/services/investment";
+import { useEffect, useState } from "react";
 
 interface UseInvestmentPopupProps {
   investments: any[] | null;

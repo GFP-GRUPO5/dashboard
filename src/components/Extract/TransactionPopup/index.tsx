@@ -1,12 +1,14 @@
 import PopUp from "@/components/PopUp";
 import useTransaction from "@/hooks/useTransaction";
-import { TransactionPopupProps } from "@/interfaces/transaction";
+import { TransactionPopupProps, TransactionType } from "@/interfaces/transaction";
+import Image from "next/image";
 import { useState } from "react";
-import { FiFileText, FiUpload } from "react-icons/fi";
+import { FiUpload } from "react-icons/fi";
+ 
 
-const TransactionPopup = ({ transaction, onClose, onSave }: TransactionPopupProps) => {
+const TransactionPopup = ({ transaction, onClose }: TransactionPopupProps) => {
   const [value, setValue] = useState(transaction.value.toString());
-  const [type, setType] = useState<"depósito" | "transferência">(transaction.type);
+  const [type, setType] = useState<TransactionType>(transaction.type);
   const [file, setFile] = useState<File | null>(null);
 
   const { handleEditTransaction } = useTransaction();
@@ -24,7 +26,6 @@ const TransactionPopup = ({ transaction, onClose, onSave }: TransactionPopupProp
 
   return (
     <PopUp isOpen={true} title="Editar Transação" onClose={onClose} onSubmit={handleSave}>
-      
       <label>
         Valor:
         <input
@@ -34,7 +35,6 @@ const TransactionPopup = ({ transaction, onClose, onSave }: TransactionPopupProp
           className="w-full p-2 border border-gray rounded-md mb-4"
         />
       </label>
-
       <label>
         Tipo:
         <select
@@ -46,14 +46,16 @@ const TransactionPopup = ({ transaction, onClose, onSave }: TransactionPopupProp
           <option value="transferência">Transferência</option>
         </select>
       </label>
-
-
       <label>
         Anexo:
         <div className="flex items-end gap-4">
           {transaction.receiptUrl && (
             <div className="mt-4">
-              <img src={transaction.receiptUrl} alt="Comprovante" className="w-[50px] h-auto rounded-lg border" />
+              <Image
+                src={transaction.receiptUrl}
+                alt="Comprovante"
+                className="w-[50px] h-auto rounded-lg border" 
+              />
             </div>
           )}
           <div className="flex gap-2 items-center justify-center">
@@ -67,7 +69,6 @@ const TransactionPopup = ({ transaction, onClose, onSave }: TransactionPopupProp
           />
         </div>
       </label>
-
     </PopUp>
   );
 };

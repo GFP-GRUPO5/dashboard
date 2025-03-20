@@ -6,6 +6,7 @@ export const getInvestments = async () => {
     const response = await axios.get(`${BASE_URL}/investments`)
     return response.data;
   } catch(error){
+    console.log(error)
     throw new Error ("Falha ao acessar os investimentos")
   }
 };
@@ -15,6 +16,7 @@ export const updateInvestment = async (type:string, value:number) => {
     const response = await axios.put(`${BASE_URL}/investments/${type}`, {value})
     return response.data;
   }catch (error){
+    console.log(error)
     throw new Error ("Falha ao atualizar o investimento")
   }
 }
