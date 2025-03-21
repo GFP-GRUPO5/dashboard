@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@module-federation/nextjs-mf": "^8.8.20",
     "axios": "^1.7.9",
     "next": "^15.1.7",
     "react": "^19.0.0",

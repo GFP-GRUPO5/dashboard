@@ -17,8 +17,17 @@ interface ExtractProps {
 }
 
 const Extract = ({ transactions, onEdit, onDelete }: ExtractProps) => {
-  const { filters, setFilters, paginatedItems, currentPage, totalPages, goToPreviousPage, goToNextPage } =
-    useFilteredTransactions(transactions, itensPerPage);
+  const {
+    filters,
+    setFilters,
+    paginatedItems,
+    currentPage,
+    totalPages,
+    goToPreviousPage,
+    goToNextPage 
+  } = useFilteredTransactions(transactions, itensPerPage);
+
+  console.log(transactions)
 
   const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null);
   const [receiptUrl, setReceiptUrl] = useState<string | null>(null);

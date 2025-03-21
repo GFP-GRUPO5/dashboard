@@ -1,14 +1,14 @@
-import { useEffect } from "react";
+import { deleteFile, uploadFile } from "@/api/services/file";
 import {
   createTransaction,
   deleteTransaction,
   getTransactions,
   updateTransaction,
 } from "@/api/services/transaction";
-import { uploadFile, deleteFile } from "@/api/services/file";
-import { Transaction } from "@/interfaces/transaction";
 import { useTransactionContext } from "@/context/TransactionContext";
+import { Transaction } from "@/interfaces/transaction";
 import { formatDate } from "@/utils/formatters";
+import { useEffect } from "react";
 import useAccount from "./useAccount";
 
 const useTransaction = () => {
@@ -56,11 +56,13 @@ const useTransaction = () => {
     if (isNaN(value)) return alert("Por favor, insira um valor válido.");
   
     const { formattedDate, month } = formatDate(new Date());
-    const receiptUrl = await handleFileUpload(file);
+
   
     if (transactionType === "transferência" && value > account.balance)
       return alert("Saldo insuficiente para transferência.");
-  
+
+    const receiptUrl = await handleFileUpload(file);
+    
     const newTransaction: Transaction = {
       type: transactionType,
       value,
@@ -70,14 +72,23 @@ const useTransaction = () => {
     };
   
     try {
+
       await updateAccountState({
         ...account,
         balance: calculateUpdatedBalance(account.balance, newTransaction),
       });
       const { id } = await createTransaction(newTransaction);
       setTransactionHistory([...transactionHistory, { ...newTransaction, id }]);
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Erro ao processar transação:", error);
+      alert(JSON.stringify(error))
+
+      // if (typeof error ) {
+
+      // }
+      // error as FileUploadError
+      // error as UpdateAccountError
+      // error as CreateTransactionError
     }
   
     setAmount("");
