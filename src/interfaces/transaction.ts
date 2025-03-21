@@ -25,5 +25,5 @@ export interface Transaction {
     transactions: Transaction[];
     onEdit: (transaction: Transaction) => void;
     onDelete: (transactionId: number) => void;
-    onShowReceipt: (receiptUrl: string | null) => void;
+    onShowReceipt?: (receiptUrl: string | null) => void;
   }

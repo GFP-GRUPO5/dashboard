@@ -5,7 +5,7 @@ import TextField from "@/components/Inputs/TextField";
 import useSuggestedAmounts from "@/hooks/useSuggestedAmounts";
 import useTransaction from "@/hooks/useTransaction";
 import Image from "next/image";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { FiFileText, FiUpload } from "react-icons/fi";
 import Transaction from "../../../public/images/illustrations/transaction";
 
@@ -20,7 +20,8 @@ const FormTransaction = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
     handleTransaction(receipt);
   };
 
@@ -93,7 +94,7 @@ const FormTransaction = () => {
         </div>
 
         <div className="col-span-3">
-          <Button text="Concluir Transação" className="bg-blue text-white px-10" onClick={handleSubmit} />
+          <Button text="Concluir Transação" className="bg-blue text-white px-10" onClick={(event) => handleSubmit(event)} type="button"/>
         </div>
 
         <div className="col-span-3 flex justify-end items-end">

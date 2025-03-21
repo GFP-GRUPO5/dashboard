@@ -27,8 +27,6 @@ const Extract = ({ transactions, onEdit, onDelete }: ExtractProps) => {
     goToNextPage 
   } = useFilteredTransactions(transactions, itensPerPage);
 
-  console.log(transactions)
-
   const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null);
   const [receiptUrl, setReceiptUrl] = useState<string | null>(null);
 
@@ -42,7 +40,6 @@ const Extract = ({ transactions, onEdit, onDelete }: ExtractProps) => {
         transactions={paginatedItems}
         onEdit={setEditingTransaction}
         onDelete={onDelete}
-        onShowReceipt={setReceiptUrl}
       />
 
       {paginatedItems.length > 0 && (

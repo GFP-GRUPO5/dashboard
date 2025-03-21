@@ -1,8 +1,8 @@
-import { MdDelete, MdEdit, MdFilePresent } from "react-icons/md";
 import Button from "@/components/Button";
 import { TransactionListProps } from "@/interfaces/transaction";
+import { MdDelete, MdEdit, MdFilePresent } from "react-icons/md";
 
-const TransactionList = ({ transactions, onEdit, onDelete, onShowReceipt }: TransactionListProps) => {
+const TransactionList = ({ transactions, onEdit, onDelete }: TransactionListProps) => {
   if (transactions.length === 0) {
     return <p>Não há transações correspondentes.</p>;
   }
@@ -26,9 +26,9 @@ const TransactionList = ({ transactions, onEdit, onDelete, onShowReceipt }: Tran
             </div>
             <div className="col-start-3 col-end-4 row-start-3 row-end-4 flex justify-center items-center gap-4 text-green">
               {transaction.receiptUrl && (
-                <button onClick={() => onShowReceipt(transaction.receiptUrl ?? null)}>
+                <a href={transaction.receiptUrl} target="_blank" >
                   <MdFilePresent size={20} />
-                </button>
+                </a>
               )}
               <Button text={<MdEdit size={20} />} onClick={() => onEdit(transaction)} />
               <Button text={<MdDelete size={20} />} onClick={() => onDelete(transaction.id!)} />

@@ -1,7 +1,6 @@
 import PopUp from "@/components/PopUp";
 import useTransaction from "@/hooks/useTransaction";
 import { TransactionPopupProps, TransactionType } from "@/interfaces/transaction";
-import Image from "next/image";
 import { useState } from "react";
 import { FiUpload } from "react-icons/fi";
  
@@ -49,15 +48,6 @@ const TransactionPopup = ({ transaction, onClose }: TransactionPopupProps) => {
       <label>
         Anexo:
         <div className="flex items-end gap-4">
-          {transaction.receiptUrl && (
-            <div className="mt-4">
-              <Image
-                src={transaction.receiptUrl}
-                alt="Comprovante"
-                className="w-[50px] h-auto rounded-lg border" 
-              />
-            </div>
-          )}
           <div className="flex gap-2 items-center justify-center">
             <FiUpload size={24} className="hover:text-blue-800 transition-all" />
             <span className="text-sm">Alterar Recibo</span>
