@@ -1,8 +1,9 @@
+import { ImagesName } from "@/types/ImageName"
 import ServiceBox from "./ServiceBox"
 
 const Services = () => {
 
-    const services = [
+    const services: { image: ImagesName, text: string }[] = [
         {
             image: "loan",
             text: "Emprestimo",
